@@ -1,0 +1,5 @@
+{
+    "require": {
+        "mohammadv184/arcaptcha": "v1.*"
+    }
+}
