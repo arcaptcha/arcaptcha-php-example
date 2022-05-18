@@ -6,7 +6,7 @@ class ArCaptcha
  * Api Base Uri
  * @var string
  */
-    protected $api_base_uri = 'https://api.arcaptcha.ir/arcaptcha/api/';
+    protected $api_base_uri = 'https://arcaptcha.ir/2/';
 
     /**
      * Script Url
@@ -81,7 +81,7 @@ class ArCaptcha
     public function verify(string $challenge_id): bool
     {
         try {
-            $response = $this->post($this->api_base_uri . 'verify', ['challenge_id' => $challenge_id, 'site_key' => $this->site_key, 'secret_key' => $this->secret_key]);
+            $response = $this->post($this->api_base_uri . 'siteverify', ['challenge_id' => $challenge_id, 'site_key' => $this->site_key, 'secret_key' => $this->secret_key]);
         } catch (Exception $e) {
             return false;
         }
