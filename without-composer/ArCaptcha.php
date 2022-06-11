@@ -6,13 +6,13 @@ class ArCaptcha
  * Api Base Uri
  * @var string
  */
-    protected $api_base_uri = 'https://arcaptcha.ir/2/';
+    protected $api_base_uri = 'https://arcaptcha.co/2/';
 
     /**
      * Script Url
      * @var string
      */
-    protected $script_url = 'https://widget.arcaptcha.ir/1/api.js';
+    protected $script_url = 'https://widget.arcaptcha.co/2/api.js';
 
     /**
      * User Site Key
@@ -67,9 +67,9 @@ class ArCaptcha
         $this->site_key = $site_key;
         $this->secret_key = $secret_key;
         $this->color = $options['color'] ?? 'normal';
-        $this->lang = $options['lang'] ?? 'lang';
+        $this->lang = $options['lang'] ?? 'fa';
         $this->size = $options['size'] ?? 'normal';
-        $this->size = $options['theme'] ?? 'light';
+        $this->theme = $options['theme'] ?? 'light';
         $this->callback = $options['callback'] ?? '';
     }
 
@@ -81,7 +81,7 @@ class ArCaptcha
     public function verify(string $challenge_id): bool
     {
         try {
-            $response = $this->post($this->api_base_uri . 'siteverify', ['challenge_id' => $challenge_id, 'site_key' => $this->site_key, 'secret_key' => $this->secret_key]);
+            $response = $this->post($this->api_base_uri . 'siteverify', ['response' => $challenge_id, 'sitekey' => $this->site_key, 'secret' => $this->secret_key]);
         } catch (Exception $e) {
             return false;
         }

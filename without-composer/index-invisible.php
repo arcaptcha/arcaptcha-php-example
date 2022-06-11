@@ -7,7 +7,7 @@
 ?>
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') { // check form submission
-        if ($ArCaptcha->verify($_POST["arcaptcha-token"])) { // verify that captcha is solved
+        if ($ArCaptcha->verify($_POST["arcaptcha-response"])) { // verify that captcha is solved
             echo "OK!";
         } else {
             echo "FAILED!";
@@ -17,9 +17,9 @@
     <!DOCTYPE html>
         <head></head>
         <body>
-            <?php echo $ArCaptcha->getScript() // try to inject script into body                                       ?>
+            <?php echo $ArCaptcha->getScript() // try to inject script into body                                        ?>
             <form method="POST" id="form" action="" name="form">
-                <?php echo $ArCaptcha->getWidget() // try to inject div with arcaptcha class                                       ?>
+                <?php echo $ArCaptcha->getWidget() // try to inject div with arcaptcha class                                        ?>
                 <input id="submit_value" type="button" name="submit_value" value="Submit"/>
             </form>
 
